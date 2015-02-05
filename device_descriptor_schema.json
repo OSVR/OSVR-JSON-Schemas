@@ -9,47 +9,34 @@
       "pattern": "^[a-zA-Z]/[1-9][0-9]*$"
     },
     "trackerSensorAlias": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/aliasBase"
-        },
-        {
-          "pattern": "^tracker/"
-        }
-      ]
+      "allOf": [{
+        "$ref": "#/definitions/aliasBase"
+      }, {
+        "pattern": "^tracker/"
+      }]
     },
     "analogAlias": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/aliasBase"
-        },
-        {
-          "pattern": "^analog/"
-        }
-      ]
+      "allOf": [{
+        "$ref": "#/definitions/aliasBase"
+      }, {
+        "pattern": "^analog/"
+      }]
     },
     "buttonAlias": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/aliasBase"
-        },
-        {
-          "pattern": "^button/"
-        }
-      ]
+      "allOf": [{
+        "$ref": "#/definitions/aliasBase"
+      }, {
+        "pattern": "^button/"
+      }]
     },
     "concreteAlias": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/buttonAlias"
-        },
-        {
-          "$ref": "#/definitions/trackerSensorAlias"
-        },
-        {
-          "$ref": "#/definitions/analogAlias"
-        }
-      ]
+      "anyOf": [{
+        "$ref": "#/definitions/buttonAlias"
+      }, {
+        "$ref": "#/definitions/trackerSensorAlias"
+      }, {
+        "$ref": "#/definitions/analogAlias"
+      }]
     },
     "aliasGrouping": {
       "type": "object",
@@ -65,23 +52,20 @@
       }
     },
     "aliasNode": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/concreteAlias"
-        },
-        {
-          "$ref": "#/definitions/aliasGrouping"
-        }
-      ]
+      "anyOf": [{
+        "$ref": "#/definitions/concreteAlias"
+      }, {
+        "$ref": "#/definitions/aliasGrouping"
+      }]
     }
   },
   "type": "object",
   "properties": {
-    "vendor": {
+    "deviceVendor": {
       "title": "Device vendor/manufacturer",
       "type": "string"
     },
-    "name": {
+    "deviceName": {
       "title": "Device product name",
       "type": "string"
     },
@@ -90,13 +74,13 @@
       "type": "string"
     },
     "version": {
-      "title": "Descriptor version number",
+      "title": "Static descriptor version number",
       "description": "Increment with each committed change",
       "type": "integer",
       "default": 1
     },
     "lastModified": {
-      "title": "Descriptor Last-Modified timestamp",
+      "title": "Static descriptor Last-Modified timestamp",
       "description": "Should use RFC 3339, section 5.6 format, aka javascript (new Date()).toJSON()",
       "type": "string",
       "format": "date-time"
