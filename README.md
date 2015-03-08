@@ -7,3 +7,6 @@ Shared JSON schemas for the OSVR ecosystem - used across multiple projects, so p
 If you're seeing this as a subdirectory somewhere, that's probably because the schemas were included as a Git submodule or other similar mechanism. See the link above for the latest versions.
 
 
+## License
+
+This project: Licensed under the Apache License, Version 2.0.
