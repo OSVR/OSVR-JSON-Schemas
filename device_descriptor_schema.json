@@ -8,7 +8,7 @@
       "title": "Semantic alias",
       "pattern": "^[a-zA-Z]/[1-9][0-9]*$"
     },
-    "trackerSensorAlias": {
+    "trackerAlias": {
       "allOf": [{
         "$ref": "#/definitions/aliasBase"
       }, {
@@ -33,7 +33,7 @@
       "anyOf": [{
         "$ref": "#/definitions/buttonAlias"
       }, {
-        "$ref": "#/definitions/trackerSensorAlias"
+        "$ref": "#/definitions/trackerAlias"
       }, {
         "$ref": "#/definitions/analogAlias"
       }]
