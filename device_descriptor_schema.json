@@ -188,6 +188,9 @@
       "additionalProperties": {
         "$ref": "#/definitions/aliasNode"
       }
+    },
+    "automaticAliases": {
+      "title": "Automatically-suggested (absolute) aliases, with an optional priority."
     }
   }
 }
