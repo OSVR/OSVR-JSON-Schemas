@@ -29,6 +29,13 @@
         "pattern": "^button/"
       }]
     },
+    "imagingAlias": {
+      "allOf": [{
+        "$ref": "#/definitions/aliasBase"
+      }, {
+        "pattern": "^imaging/"
+      }]
+    },
     "concreteAlias": {
       "anyOf": [{
         "$ref": "#/definitions/buttonAlias"
@@ -36,6 +43,8 @@
         "$ref": "#/definitions/trackerAlias"
       }, {
         "$ref": "#/definitions/analogAlias"
+      }, {
+        "$ref": "#/definitions/imagingAlias"
       }]
     },
     "aliasGrouping": {
