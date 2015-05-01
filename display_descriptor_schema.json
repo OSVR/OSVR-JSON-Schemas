@@ -1,0 +1,134 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "OSVR Display Descriptor",
+  "description": "This schema documents and guides creation of a display descriptor, that describes properties of a head-mounted display",
+
+  "type": "object",
+
+  "properties": {
+    "device":{
+      "title": "HMD Device Description",
+      "description": "Describes HMD hardware and metadata.",
+      "type": "object",
+      "properties": {
+        "vendor":{
+          "title": "Device vendor/manufacturer",
+          "type":"string"
+        },
+        "model":{
+          "title": "Device model",
+          "type":"string"
+        },
+        "version":{
+          "title": "Device version",
+          "type":"string"
+        },
+        "numDisplays":{
+          "title": "Number of physical screens",
+          "type":"integer"
+        },
+        "note":{
+          "title": "Notes about the device",
+          "type":"string"
+        }
+      }
+    },
+    "fieldOfView":{
+      "title": "HMD Field of View Description",
+      "description": "Describes HMD properties related to field of view.",
+      "type": "object",
+      "properties": {
+        "monocularHorizontal":{
+          "title": "Monocular Horizontal FOV",
+          "type":"number"
+        },
+        "monocularVertical":{
+          "title": "Monocular Vertical FOV",
+          "type":"number"
+        },
+        "overlapPercent":{
+          "title": "Percentage of eye overlap.",
+          "type":"number"
+        },
+        "numDisplays":{
+          "title": "Number of physical screens",
+          "type":"integer"
+        }
+      }
+    },
+    "resolutions":{ //make this an array?
+      "title": "HMD Resolution Description",
+      "description": "Describes HMD properties related to resolution.",
+      "type": "object",
+      "properties": {
+        "width":{
+          "title": "Screen width in pixels",
+          "type":"integer"
+        },
+        "height":{
+          "title": "Screen height in pixels",
+          "type":"number"
+        },
+        "videoInputs":{
+          "title": "Number of connected video inputs",
+          "type":"integer"
+        },
+        "displayMode":{
+          "title": "Display Mode",
+          "enum": [ "horzSideBySide", "vertSideBySide", "fullScreen" ]
+        }
+      }
+    },
+    "distortion":{
+      "title": "HMD Distortion Description",
+      "description": "Describes HMD properties related to distortion shader.",
+      "type": "object",
+      "properties": {
+        "k1Red":{
+          "title": "K1 Red distortion value",
+          "type":"number"
+        },
+        "k1Green":{
+          "title": "K1 Green distortion value",
+          "type":"number"
+        },
+        "k1Blue":{
+          "title": "K1 Blue distortion value",
+          "type":"number"
+        }
+      }
+    },
+    "rendering":{
+      "title": "HMD Rendering Description",
+      "description": "Describes HMD properties related to rendering.",
+      "type": "object",
+      "properties": {
+        "rightRoll":{
+          "title": "Right eye roll amount",
+          "type":"number"
+        },
+        "leftRoll":{
+          "title": "Left eye roll amount",
+          "type":"number"
+        }
+      }
+    },
+    "eyes":{ //make this an array?
+      "title": "HMD Eyes Description",
+      "description": "Describes HMD properties related to eyes.",
+      "type": "object",
+      "properties": {
+        "centerProjX":{
+          "title": "Horizontal center of projection",
+          "type":"number"
+        },
+        "centerProjY":{
+          "title": "Vertical center of projection",
+          "type":"number"
+        }
+      }
+    },
+    "required": [ "device", "fieldOfView", "resolutions", "distortion", "rendering", "eyes"]
+
+
+  }
