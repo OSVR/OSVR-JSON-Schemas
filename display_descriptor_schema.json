@@ -125,7 +125,12 @@
         "centerProjY":{
           "title": "Vertical center of projection",
           "type":"number"
-        }
+        },
+        "rotate180":{
+          "title": "Flip Display Rotation",
+          "description": "Indicates if the view needs to flipped 180 degrees on the z axis.",
+          "type":"boolean"
+        }        
       }
     },
     "required": [ "device", "fieldOfView", "resolutions", "distortion", "rendering", "eyes"]
