@@ -31,30 +31,33 @@
           "title": "Notes about the device",
           "type":"string"
         }
-      }
+      },
+      "required": [ "vendor", "model", "version", "numDisplays"]
     },
     "fieldOfView":{
       "title": "HMD Field of View Description",
-      "description": "Describes HMD properties related to field of view.",
+      "description": "Defines the optical parameters of the HMD. Since some HMDs have partial overlap – meaning that the viewing direction of the left and right eye are not identical – we define the field of view of just one eye and then the overlap between them.",
       "type": "object",
       "properties": {
         "monocularHorizontal":{
-          "title": "Monocular Horizontal FOV",
+          "title": "Monocular Horizontal FOV in degrees",
           "type":"number"
         },
         "monocularVertical":{
-          "title": "Monocular Vertical FOV",
+          "title": "Monocular Vertical FOV in degrees",
           "type":"number"
         },
         "overlapPercent":{
           "title": "Percentage of eye overlap.",
           "type":"number"
         },
-        "numDisplays":{
-          "title": "Number of physical screens",
-          "type":"integer"
+        "pitchTilt":{
+          "title": "Pitch tilt in degrees",
+          "description": "Some HMDs have their field of view tilted downwards. In this case, pitchTilt would have a non-zero value in degrees, where positive is a downward tilt.",
+          "type": "number"
         }
-      }
+      },
+      "required": [ "monocularHorizontal", "monocularVertical", "overlapPercent"]
     },
     "resolutions":{ //make this an array?
       "title": "HMD Resolution Description",
@@ -62,22 +65,25 @@
       "type": "object",
       "properties": {
         "width":{
-          "title": "Screen width in pixels",
+          "title": "Horizontal size, in pixels, of entire video signal",
           "type":"integer"
         },
         "height":{
-          "title": "Screen height in pixels",
-          "type":"number"
+          "title": "Vertical size, in pixels, of entire video signal",
+          "type":"integer"
         },
         "videoInputs":{
-          "title": "Number of connected video inputs",
+          "title": "Number of distinct video inputs",
+          "description":"Some HMDs have 2 separate inputs, one for each eye.",
           "type":"integer"
         },
         "displayMode":{
           "title": "Display Mode",
+          "description":"horzSideBySide, vertSideBySide, or fullScreen. If a single input is used in side-by-side mode, width and height show the entire width and height of both sides combined.",
           "enum": [ "horzSideBySide", "vertSideBySide", "fullScreen" ]
         }
-      }
+      },
+      "required": [ "width", "height", "videoInputs", "displayMode"]
     },
     "distortion":{
       "title": "HMD Distortion Description",
@@ -96,7 +102,8 @@
           "title": "K1 Blue distortion value",
           "type":"number"
         }
-      }
+      },
+      "required": [ "k1Red", "k1Green", "k1Blue"]
     },
     "rendering":{
       "title": "HMD Rendering Description",
@@ -111,7 +118,8 @@
           "title": "Left eye roll amount",
           "type":"number"
         }
-      }
+      },
+      "required": [ "k1Red", "k1Green", "k1Blue"]
     },
     "eyes":{ //make this an array?
       "title": "HMD Eyes Description",
@@ -130,8 +138,9 @@
           "title": "Flip Display Rotation",
           "description": "Indicates if the view needs to flipped 180 degrees on the z axis.",
           "type":"boolean"
-        }        
-      }
+        }
+      },
+      "required": [ "centerProjX", "centerProjY"]
     },
     "required": [ "device", "fieldOfView", "resolutions", "distortion", "rendering", "eyes"]
 
