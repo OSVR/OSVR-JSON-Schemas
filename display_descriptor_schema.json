@@ -6,6 +6,11 @@
   "type": "object",
 
   "properties": {
+    "schemaVersion":{
+      "title":"Schema Version",
+      "description":"Version number of the display descriptor JSON schema.",
+      "type":"number"
+    },
     "device":{
       "title": "HMD Device Description",
       "description": "Describes HMD hardware and metadata.",
@@ -81,6 +86,11 @@
           "title": "Display Mode",
           "description":"horzSideBySide, vertSideBySide, or fullScreen. If a single input is used in side-by-side mode, width and height show the entire width and height of both sides combined.",
           "enum": [ "horzSideBySide", "vertSideBySide", "fullScreen" ]
+        },
+        "swapEyes":{
+          "title": "Swap Eyes",
+          "description":"Swap the left and right cameras.",
+          "type":"boolean"
         }
       },
       "required": [ "width", "height", "videoInputs", "displayMode"]
