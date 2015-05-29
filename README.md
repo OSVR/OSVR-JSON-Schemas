@@ -21,6 +21,11 @@ If you're seeing this as a subdirectory somewhere, that's probably because the s
 
 	- `display_descriptor_schema_v1.json` - A newer, somewhat incomplete and inconsistent, but importantly, widely established (used by the Unity plugin around the core v0.2 release) description
 
+### Documentation
+While we try to make the schemas sufficient documentation for the files they describe, sometimes additional prose documentation is helpful.
+
+Documentation regarding `display_descriptor_schema_v1.json` is included in this repo, in Markdown format with illustrations (including illustration sources in SVG where applicable).
+
 
 ## License
 
