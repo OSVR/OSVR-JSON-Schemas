@@ -1,15 +1,22 @@
-# Structure of JSON descriptor file for HMDs
+# Structure of JSON descriptor file (v1) for HMDs
 
 
 
-This document describes the structure of the descriptor files for OSVR HMDs. It does so in the context of an example file covering the zSight 1920-100. This example file is available as part of the OSVR distribution. Since not all JSON parsers (notably the Python JSON parser) accept C-style comments, we opted to provide description in a standalone document.
+This document describes the structure of the descriptor files for OSVR HMDs. It does so in the context of an example file covering the zSight 1920-100. This example file is available as part of the OSVR distribution. 
+
+Since not all JSON parsers (notably the Python JSON parser) accept C-style comments, we opted to provide description in a standalone document. You can also consult the JSON-Schema file.
+
+The file starts with a schema version indicator, and then the main `hmd` object is opened.
 
 ```json
 {
+  "meta": {
+    "schemaVersion": 1
+  },
   "hmd": {
 ```
 
-The `device` section does not have an impact on the way the image is rendered. It provides information that might be used in displaying the selected HMD, building a catalog of available HMDs and so forth.
+The `device` section does not have an impact on the way the image is rendered. It provides information that might be used in displaying the selected HMD, building a catalog of available HMDs, and so forth.
 
 
 ```json
@@ -23,7 +30,7 @@ The `device` section does not have an impact on the way the image is rendered. I
 
 The *`field_of_view`* section defines the optical parameters of the HMD. Since some HMDs have partial overlap -- meaning that the viewing direction of the left and right eye are not identical -- we define the field of view of just one eye and then the overlap between them.
 
-*`monocular_horizontal`* and *`monocular_horizontal`* fields of view are in degrees. *`overlap_percent`* is in percent of the monocular horizontal field of view. For instance, consider the diagram below showing the viewing direction of the Sensics dSight (left eye in red, right eye in green):
+*`monocular_horizontal`* and *`monocular_horizontal`* fields of view are in degrees. *`overlap_percent`* is in percent of the monocular horizontal field of view. For instance, consider the diagram below showing the viewing direction of the Sensics **dSight** (not the zSight used in the rest of this example) - left eye in red, right eye in green, and the dashed line indicating the forward direction:
 
 ![](dSight-viewing-angles.png)
 
@@ -45,11 +52,11 @@ Some HMDs have their field of view tilted downwards. In this case `pitch_tilt` w
 ```
 
 
-The `resolutions` array shows the available resolutions supported by the HMD. Some HMDs support multiple resolutions as well as multiple display modes. The first resolution in the array is the preferred resolution. The fields are as follows (see below for examples):
+The `resolutions` array shows the available resolutions supported by the HMD. Some HMDs support multiple resolutions as well as multiple display modes. The first resolution in the array is the preferred resolution, and some parsers may only be able to handle a single resolution in the array. The fields are as follows (see below for examples):
 
-- `width`: horizontal size, in pixels, of entire video signal
-- `height`: vertical size, in pixels, of entire video signal
-- `video_inputs`: number of distinct inputs that the HMD has. Some HMDs have 2 separate inputs, one for each eye. If a single input is used in side-by-side mode, width and height show the entire width and height of both sides combined.
+- `width`: horizontal size, in pixels, of a video input
+- `height`: vertical size, in pixels, of a video input
+- `video_inputs`: number of distinct inputs that the HMD has. Some HMDs have 2 separate inputs, one for each eye. If a single input is used in side-by-side mode, `width` and `height` show the entire width and height of both sides combined.
 - `display_mode`: can be `full_screen`, `horz_side_by_side`, or `vertical_side_by_side`. Here are examples:
 
 Horizontal side-by-side:
