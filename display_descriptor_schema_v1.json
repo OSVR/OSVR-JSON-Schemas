@@ -141,12 +141,12 @@
           "type": "object",
           "properties": {
             "right_roll": {
-              "title": "Right eye roll amount",
+              "title": "Right eye roll amount (degrees)",
               "type": "number",
               "default": 0
             },
             "left_roll": {
-              "title": "Left eye roll amount",
+              "title": "Left eye roll amount (degrees)",
               "type": "number",
               "default": 0
             }
@@ -175,7 +175,7 @@
               },
               "rotate_180": {
                 "title": "Flip Display Rotation",
-                "description": "Indicates if the view needs to flipped 180 degrees on the z axis.",
+                "description": "Indicates if the view needs to flipped 180 degrees on the z axis - 1 for true, 0 for false.",
                 "type": "integer",
                 "minimum": 0,
                 "maximum": 1
