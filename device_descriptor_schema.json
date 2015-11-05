@@ -8,61 +8,35 @@
       "title": "Semantic alias",
       "pattern": "^[a-zA-Z]/[1-9][0-9]*$"
     },
-    "trackerAlias": {
+    "aliasLeaf": {
       "allOf": [
         {
-          "$ref": "#/definitions/aliasBase"
+          "title": "Alias target (leaf)",
+          "type": "string"
         },
         {
-          "pattern": "^tracker/"
+          "$ref": "#/definitions/aliasBase"
         }
       ]
     },
-    "analogAlias": {
-      "allOf": [
+    "generalAliasTarget": {
+      "oneOf": [
         {
-          "$ref": "#/definitions/aliasBase"
+          "$ref": "#/definitions/aliasLeaf"
         },
         {
-          "pattern": "^analog/"
+          "$ref": "#/definitions/aliasTransform"
         }
       ]
     },
-    "buttonAlias": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/aliasBase"
-        },
-        {
-          "pattern": "^button/"
+    "aliasTransform": {
+      "title": "Alias transform level",
+      "type": "object",
+      "properties": {
+        "child": {
+          "$ref": "#/definitions/generalAliasTarget"
         }
-      ]
-    },
-    "imagingAlias": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/aliasBase"
-        },
-        {
-          "pattern": "^imaging/"
-        }
-      ]
-    },
-    "concreteAlias": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/buttonAlias"
-        },
-        {
-          "$ref": "#/definitions/trackerAlias"
-        },
-        {
-          "$ref": "#/definitions/analogAlias"
-        },
-        {
-          "$ref": "#/definitions/imagingAlias"
-        }
-      ]
+      }
     },
     "aliasGrouping": {
       "type": "object",
@@ -70,7 +44,7 @@
       "description": "A 'directory' on the semantic tree. May also contain an alias at its own level, described by '$target'",
       "properties": {
         "$target": {
-          "$ref": "#/definitions/concreteAlias"
+          "$ref": "#/definitions/aliasLeaf"
         }
       },
       "additionalProperties": {
@@ -78,9 +52,9 @@
       }
     },
     "aliasNode": {
-      "anyOf": [
+      "oneOf": [
         {
-          "$ref": "#/definitions/concreteAlias"
+          "$ref": "#/definitions/aliasLeaf"
         },
         {
           "$ref": "#/definitions/aliasGrouping"
