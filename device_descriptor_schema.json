@@ -3,28 +3,19 @@
   "title": "OSVR Device Descriptor",
   "description": "This schema documents and guides creation of a device descriptor, that both describes the interfaces available, and provides semantic mappings to those interfaces.",
   "definitions": {
-    "aliasBase": {
-      "type": "string",
-      "title": "Semantic alias",
-      "pattern": "^[a-zA-Z]/[1-9][0-9]*$"
-    },
     "aliasLeaf": {
-      "allOf": [
-        {
-          "title": "Alias target (leaf)",
-          "type": "string"
-        },
-        {
-          "$ref": "#/definitions/aliasBase"
-        }
-      ]
+      "title": "Alias target (leaf)",
+      "type": "string",
+      "pattern": "^[a-zA-Z]/[1-9][0-9]*$"
     },
     "generalAliasTarget": {
       "oneOf": [
         {
+          "title": "Alias target (leaf)",
           "$ref": "#/definitions/aliasLeaf"
         },
         {
+          "title": "Transform level",
           "$ref": "#/definitions/aliasTransform"
         }
       ]
@@ -260,7 +251,9 @@
       }
     },
     "automaticAliases": {
-      "title": "Automatically-suggested (absolute) aliases, with an optional priority."
+      "title": "Automatically-suggested (absolute) aliases",
+      "description": "If no automatic (of greater priority) or user-specified (defaulting to high priority) alias exists at the given path, it will automatically be created. A priority may optionally be specified.",
+      "type": "object"
     }
   }
 }
