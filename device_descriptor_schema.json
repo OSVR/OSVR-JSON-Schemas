@@ -11,11 +11,9 @@
     "generalSemanticAliasTarget": {
       "oneOf": [
         {
-          "title": "Alias target (leaf)",
           "$ref": "#/definitions/semanticAliasLeaf"
         },
         {
-          "title": "Transform level",
           "$ref": "#/definitions/semanticAliasTransform"
         }
       ]
@@ -25,7 +23,14 @@
       "type": "object",
       "properties": {
         "child": {
-          "$ref": "#/definitions/generalSemanticAliasTarget"
+          "allOf": [
+            {
+              "title": "Nested transform child"
+            },
+            {
+              "$ref": "#/definitions/generalSemanticAliasTarget"
+            }
+          ]
         }
       }
     },
@@ -35,7 +40,14 @@
       "description": "A 'directory' on the semantic tree. May also contain an alias at its own level, described by '$target'",
       "properties": {
         "$target": {
-          "$ref": "#/definitions/generalSemanticAliasTarget"
+          "allOf": [
+            {
+              "title": "Target for the 'directory-level' path"
+            },
+            {
+              "$ref": "#/definitions/generalSemanticAliasTarget"
+            }
+          ]
         }
       },
       "additionalProperties": {
@@ -87,6 +99,15 @@
           "type": "object",
           "title": "Tracker interface description",
           "description": "Describes properties of the tracker interface provided by this device.",
+          "defaultProperties": [
+            "bounded",
+            "position",
+            "orientation",
+            "linearVelocity",
+            "angularVelocity",
+            "linearAcceleration",
+            "angularAcceleration"
+          ],
           "properties": {
             "count": {
               "title": "Number of sensors",
@@ -185,7 +206,6 @@
               }
             }
           }
-
         },
         "analog": {
           "type": "object",
