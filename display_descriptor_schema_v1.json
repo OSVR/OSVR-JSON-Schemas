@@ -2,7 +2,6 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "OSVR Display Descriptor (v1)",
   "description": "This schema documents and guides creation of a display descriptor, that describes properties of a head-mounted display",
-
   "type": "object",
   "properties": {
     "meta": {
@@ -41,7 +40,8 @@
               "type": "string"
             },
             "num_displays": {
-              "title": "Number of physical screens",
+              "title": "Number of physical screens (NOT USED)",
+              "description": "This is redundant with information elsewhere in the schema and should not be used.",
               "type": "integer",
               "default": 1
             },
@@ -50,7 +50,10 @@
               "type": "string"
             }
           },
-          "required": ["vendor", "model"]
+          "required": [
+            "vendor",
+            "model"
+          ]
         },
         "field_of_view": {
           "title": "HMD Field of View Description",
@@ -66,17 +69,21 @@
               "type": "number"
             },
             "overlap_percent": {
-              "title": "Percentage of eye overlap.",
+              "title": "Percentage of horizontal FOV that is 'overlapped'.",
               "type": "number"
             },
             "pitch_tilt": {
-              "title": "Pitch tilt in degrees",
+              "title": "Pitch tilt in degrees (NOT HANDLED)",
               "description": "Some HMDs have their field of view tilted downwards. In this case, pitch_tilt would have a non-zero value in degrees, where positive is a downward tilt.",
               "type": "number",
               "default": 0
             }
           },
-          "required": ["monocular_horizontal", "overlap_percent", "overlap_percent"]
+          "required": [
+            "monocular_horizontal",
+            "overlap_percent",
+            "overlap_percent"
+          ]
         },
         "resolutions": {
           "title": "Supported resolutions",
@@ -105,11 +112,20 @@
               "display_mode": {
                 "title": "Display Mode",
                 "description": "If a single input is used in side-by-side mode, width and height show the entire width and height of both sides combined.",
-                "enum": ["horz_side_by_side", "vert_side_by_side", "full_screen"],
+                "enum": [
+                  "horz_side_by_side",
+                  "vert_side_by_side",
+                  "full_screen"
+                ],
                 "default": "horz_side_by_side"
               }
             },
-            "required": ["width", "height", "video_inputs", "display_mode"]
+            "required": [
+              "width",
+              "height",
+              "video_inputs",
+              "display_mode"
+            ]
           }
         },
         "distortion": {
@@ -133,11 +149,15 @@
               "default": 0
             }
           },
-          "required": ["k1_red", "k1_green", "k1_blue"]
+          "required": [
+            "k1_red",
+            "k1_green",
+            "k1_blue"
+          ]
         },
         "rendering": {
-          "title": "HMD Rendering Description",
-          "description": "Describes HMD properties related to rendering.",
+          "title": "HMD Rendering Description (NOT HANDLED)",
+          "description": "Describes HMD properties related to rendering. These parameters are not used - please use the per-eye rotate_180 parameter for now",
           "type": "object",
           "properties": {
             "right_roll": {
@@ -151,7 +171,10 @@
               "default": 0
             }
           },
-          "required": ["right_roll", "left_roll"]
+          "required": [
+            "right_roll",
+            "left_roll"
+          ]
         },
         "eyes": {
           "title": "HMD Eyes Description",
@@ -174,17 +197,37 @@
                 "maximum": 1
               },
               "rotate_180": {
-                "title": "Flip Display Rotation",
-                "description": "Indicates if the view needs to flipped 180 degrees on the z axis - 1 for true, 0 for false.",
-                "type": "integer",
-                "minimum": 0,
-                "maximum": 1
+                "anyOf": [
+                  {
+                    "title": "Flip Display Rotation",
+                    "description": "Indicates if the view needs to flipped 180 degrees on the z axis (that is, in the plane of the screen) - 1 for true, 0 for false.",
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "title": "Flip Display Rotation",
+                    "description": "Indicates if the view needs to flipped 180 degrees on the z axis (that is, in the plane of the screen)",
+                    "type": "boolean",
+                    "default": false
+                  }
+                ]
               }
             },
-            "required": ["center_proj_y", "center_proj_x"]
+            "required": [
+              "center_proj_y",
+              "center_proj_x"
+            ]
           }
         },
-        "required": ["device", "field_of_view", "resolutions", "distortion", "rendering", "eyes"]
+        "required": [
+          "device",
+          "field_of_view",
+          "resolutions",
+          "distortion",
+          "rendering",
+          "eyes"
+        ]
       }
     }
   }
