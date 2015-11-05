@@ -199,20 +199,20 @@
           "properties": {
             "count": {
               "title": "Number of sensors/channels",
-              "description": "number of analog channels reported",
+              "description": "number of analog sensors reported",
               "type": "integer",
               "minimum": 1
             },
             "traits": {
-              "title": "Per-channel traits",
-              "description": "Entries in this array are mapped directly to analog channels - entry 0 describes channel 0, etc. Thus, if you want to describe channel n, you must describe channel n-1 (at least trivially with an empty object) down to 0.",
+              "title": "Per-sensor traits",
+              "description": "Entries in this array are mapped directly to analog sensors/channels - entry 0 describes sensor 0, etc. Thus, if you want to describe sensor n, you must describe sensor n-1 (at least trivially with an empty object) down to 0.",
               "type": "array",
               "format": "table",
               "items": {
                 "type": "object",
-                "title": "Analog Channel Traits",
-                "headerTemplate": "Analog Channel {{ i0 }}",
-                "description": "Describes relevant properties of the analog data reported on this channel. In the case of a joystick, the 'rest' will likely be halfway between 'min' and 'max', while an analog button will likely have 'min' equal to 'rest'. These parameters may be used for scaling the data as requested by a client application or analysis module.",
+                "title": "Analog Sensor Traits",
+                "headerTemplate": "Analog Sensor {{ i0 }}",
+                "description": "Describes relevant properties of the analog data reported on this sensor/channel. In the case of a joystick, the 'rest' will likely be halfway between 'min' and 'max', while an analog button will likely have 'min' equal to 'rest'. These parameters may be used for scaling the data as requested by a client application or analysis module.",
                 "properties": {
                   "min": {
                     "title": "Minimum value",
@@ -225,7 +225,8 @@
                   "rest": {
                     "title": "Value at rest",
                     "type": "number"
-                  }
+                  },
+                  "defaultProperties": []
                 }
               }
             }
@@ -237,8 +238,8 @@
           "description": "Describes properties of the button interface provided by this device.",
           "properties": {
             "count": {
-              "title": "Number of channels",
-              "description": "number of button channels reported",
+              "title": "Number of sensors/channels",
+              "description": "number of button sensors reported",
               "type": "integer",
               "minimum": 1
             }
