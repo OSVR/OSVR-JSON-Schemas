@@ -152,6 +152,7 @@
               "format": "table",
               "items": {
                 "type": "object",
+                "defaultProperties": [],
                 "properties": {
                   "position": {
                     "title": "Reports position information?",
@@ -191,12 +192,9 @@
                   }
                 }
               }
-            },
-            "defaultProperties": [
-              "bounded",
-              "traits"
-            ]
+            }
           }
+
         },
         "analog": {
           "type": "object",
