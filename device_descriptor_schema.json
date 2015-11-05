@@ -9,43 +9,60 @@
       "pattern": "^[a-zA-Z]/[1-9][0-9]*$"
     },
     "trackerAlias": {
-      "allOf": [{
-        "$ref": "#/definitions/aliasBase"
-      }, {
-        "pattern": "^tracker/"
-      }]
+      "allOf": [
+        {
+          "$ref": "#/definitions/aliasBase"
+        },
+        {
+          "pattern": "^tracker/"
+        }
+      ]
     },
     "analogAlias": {
-      "allOf": [{
-        "$ref": "#/definitions/aliasBase"
-      }, {
-        "pattern": "^analog/"
-      }]
+      "allOf": [
+        {
+          "$ref": "#/definitions/aliasBase"
+        },
+        {
+          "pattern": "^analog/"
+        }
+      ]
     },
     "buttonAlias": {
-      "allOf": [{
-        "$ref": "#/definitions/aliasBase"
-      }, {
-        "pattern": "^button/"
-      }]
+      "allOf": [
+        {
+          "$ref": "#/definitions/aliasBase"
+        },
+        {
+          "pattern": "^button/"
+        }
+      ]
     },
     "imagingAlias": {
-      "allOf": [{
-        "$ref": "#/definitions/aliasBase"
-      }, {
-        "pattern": "^imaging/"
-      }]
+      "allOf": [
+        {
+          "$ref": "#/definitions/aliasBase"
+        },
+        {
+          "pattern": "^imaging/"
+        }
+      ]
     },
     "concreteAlias": {
-      "anyOf": [{
-        "$ref": "#/definitions/buttonAlias"
-      }, {
-        "$ref": "#/definitions/trackerAlias"
-      }, {
-        "$ref": "#/definitions/analogAlias"
-      }, {
-        "$ref": "#/definitions/imagingAlias"
-      }]
+      "anyOf": [
+        {
+          "$ref": "#/definitions/buttonAlias"
+        },
+        {
+          "$ref": "#/definitions/trackerAlias"
+        },
+        {
+          "$ref": "#/definitions/analogAlias"
+        },
+        {
+          "$ref": "#/definitions/imagingAlias"
+        }
+      ]
     },
     "aliasGrouping": {
       "type": "object",
@@ -61,10 +78,12 @@
       }
     },
     "aliasNode": {
-      "anyOf": [{
-        "$ref": "#/definitions/concreteAlias"
-      }, {
-        "$ref": "#/definitions/aliasGrouping"
+      "anyOf": [
+        {
+          "$ref": "#/definitions/concreteAlias"
+        },
+        {
+          "$ref": "#/definitions/aliasGrouping"
       }]
     }
   },
