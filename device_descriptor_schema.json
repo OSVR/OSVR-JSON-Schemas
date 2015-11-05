@@ -225,9 +225,9 @@
                   "rest": {
                     "title": "Value at rest",
                     "type": "number"
-                  },
-                  "defaultProperties": []
-                }
+                  }
+                },
+                "defaultProperties": []
               }
             }
           }
