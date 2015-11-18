@@ -81,7 +81,7 @@
           },
           "required": [
             "monocular_horizontal",
-            "overlap_percent",
+            "monocular_vertical",
             "overlap_percent"
           ]
         },
