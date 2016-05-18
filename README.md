@@ -10,6 +10,8 @@ See the [project wiki][] for some useful JSON and JSON-Schema links/tools.
 
 If you're seeing this as a subdirectory somewhere, that's probably because the schemas were included as a Git submodule or other similar mechanism. See the link above for the latest versions.
 
+You might be able to use this in Visual Studio by adding `https://raw.githubusercontent.com/OSVR/OSVR-JSON-Schemas/master/catalog.json` to your schema sources (under Options, Editor, JSON, Schema).
+
 ## Contents
 
 ### Schemas
