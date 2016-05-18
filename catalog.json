@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json.schemastore.org/schema-catalog",
+
+  "version": 1.0,
+  "schemas": [
+    {
+      "name": "OSVR Server Config",
+      "description": "OSVR-Server configuration file",
+      "fileMatch": [ "osvr_server_config.json" ],
+      "url": "https://raw.githubusercontent.com/OSVR/OSVR-JSON-Schemas/master/osvr_server_config_schema.json"
+    },
+    {
+      "name": "OSVR Display Descriptor v1",
+      "description": "OSVR-Core display descriptor schema version 1",
+      "url": "https://raw.githubusercontent.com/OSVR/OSVR-JSON-Schemas/master/display_descriptor_schema_v1.json"
+    },
+    {
+      "name": "OSVR Device Descriptor",
+      "description": "OSVR-Core JSON device descriptor",
+      "url": "https://raw.githubusercontent.com/OSVR/OSVR-JSON-Schemas/master/device_descriptor_schema.json"
+    }
+  ]
+}
